@@ -356,7 +356,7 @@ def init():
 		fi = []
 
 	tmp_killtime = datetime.datetime.now().replace(hour=int(5), minute=int(0), second = int(0))
-	kill_Time = datetime.datetime.now()
+	kill_Time = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 
 	if tmp_killtime < kill_Time :
 		kill_Time = tmp_killtime + datetime.timedelta(days=int(1))
@@ -638,7 +638,7 @@ async def dbSave():
 	except Exception as e :
 		print ('save error!!')
 		print(e.args[1]['message']) # output: This repository is empty.
-		errortime = datetime.datetime.now()
+		errortime = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 		print (errortime)
 		pass
 
@@ -832,7 +832,7 @@ async def init_data_list(filename, first_line : str = "-----------"):
 	except Exception as e :
 		print ('save error!!')
 		print(e.args[1]['message']) # output: This repository is empty.
-		errortime = datetime.datetime.now()
+		errortime = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 		print (errortime)
 		pass
 
@@ -849,7 +849,7 @@ async def data_list_Save(filename, first_line : str = "-----------",  save_data 
 	except Exception as e :
 		print ('save error!!')
 		print(e.args[1]['message']) # output: This repository is empty.
-		errortime = datetime.datetime.now()
+		errortime = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 		print (errortime)
 		pass
 
@@ -3690,9 +3690,9 @@ class mainCog(commands.Cog):
 
 		for i in range(bossNum):
 			if bossData[i][0] in boss_data_dict:
-				curr_now = datetime.datetime.now()
-				now2 = datetime.datetime.now()
-				tmp_now = datetime.datetime.now()
+				curr_now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
+				now2 = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
+				tmp_now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 				tmp_now = tmp_now.replace(hour=int(boss_data_dict[bossData[i][0]]["hour"]), minute=int(boss_data_dict[bossData[i][0]]["minute"]), second=int(boss_data_dict[bossData[i][0]]["second"]))
 					
 				bossFlag[i] = False
@@ -3762,8 +3762,8 @@ class mainCog(commands.Cog):
 
 		for i in range(bossNum):
 			if bossData[i][0] in boss_data_dict:
-				now2 = datetime.datetime.now()
-				tmp_now = datetime.datetime.now()
+				now2 = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
+				tmp_now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 				tmp_now = tmp_now.replace(hour=int(boss_data_dict[bossData[i][0]]["hour"]), minute=int(boss_data_dict[bossData[i][0]]["minute"]), second=int(boss_data_dict[bossData[i][0]]["second"]))
 					
 				bossFlag[i] = False
@@ -3817,9 +3817,9 @@ class mainCog(commands.Cog):
 
 		for i in range(bossNum):
 			if bossData[i][0] in boss_name_list:
-				curr_now = datetime.datetime.now()
-				now2 = datetime.datetime.now()
-				tmp_now = datetime.datetime.now()
+				curr_now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
+				now2 = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
+				tmp_now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 				tmp_now = tmp_now.replace(hour=int(input_hour), minute=int(input_minute), second=0) + datetime.timedelta(hours=int(input_delta_time))
 					
 				bossFlag[i] = False
@@ -3848,7 +3848,7 @@ class mainCog(commands.Cog):
 					bossFlag0[i] = True
 				result_boss_name.append(bossData[i][0])
 					
-		return await ctx.send(f"```[{', '.join(list(result_boss_name))}] 보스 [추가등록]이 완료되었습니다. [{command[27][0]}]으로 등록시간을 확인해보세요```", tts=False)
+		return await ctx.send(f"```[{', '.join(list(result_boss_name))}] 보스 [추가등록]이 완료되었습니다. [{command[22][0]}]으로 등록시간을 확인해보세요```", tts=False)
 
 	################ ?????????????? ################ 
 	@commands.command(name='!오빠')
